@@ -394,13 +394,73 @@ function initCategoryPage() {
       </div>
     `;
 
+    // Modal Reader setup
+    let modal = document.getElementById("topicReaderModal");
+    if (!modal) {
+      modal = document.createElement("div");
+      modal.id = "topicReaderModal";
+      modal.className = "topic-reader-modal";
+      modal.innerHTML = `
+        <div class="topic-modal-card">
+          <div class="topic-modal-header">
+            <div>
+              <span class="badge badge-ai" id="topicModalMeta">Chapter 1 • Foundations</span>
+              <h2 id="topicModalTitle" style="margin-top: 0.35rem; font-size: 1.5rem; font-weight: 800;">Topic Title</h2>
+            </div>
+            <button class="modal-close-btn" id="closeTopicModalBtn">✕</button>
+          </div>
+          <div class="topic-modal-body" id="topicModalBody"></div>
+        </div>
+      `;
+      document.body.appendChild(modal);
+
+      const closeBtn = modal.querySelector("#closeTopicModalBtn");
+      if (closeBtn) {
+        closeBtn.addEventListener("click", () => {
+          modal.classList.remove("active");
+        });
+      }
+
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          modal.classList.remove("active");
+        }
+      });
+    }
+
     categoryGrid.querySelectorAll(".book-topic-item").forEach((item) => {
       item.addEventListener("click", () => {
+        const topicId = item.getAttribute("data-topic-id");
         const topicTitle = item.querySelector("span:nth-child(2)").textContent;
-        if (typeof window.NimLearnUI !== "undefined" && window.NimLearnUI.showToast) {
-          window.NimLearnUI.showToast(`Topic: "${topicTitle}". Send content to publish!`);
+
+        let foundTopic = null;
+        let foundChapter = null;
+        let foundPart = null;
+
+        for (const part of book.parts) {
+          for (const chap of part.chapters) {
+            for (const top of chap.topics) {
+              if (top.id === topicId) {
+                foundTopic = top;
+                foundChapter = chap;
+                foundPart = part;
+                break;
+              }
+            }
+          }
+        }
+
+        if (foundTopic && foundTopic.content) {
+          document.getElementById("topicModalMeta").textContent = `${foundPart.partNumber} • Chapter ${foundChapter.chapterNumber}`;
+          document.getElementById("topicModalTitle").textContent = foundTopic.title;
+          document.getElementById("topicModalBody").innerHTML = foundTopic.content;
+          modal.classList.add("active");
         } else {
-          alert(`Topic: "${topicTitle}"\nProvide content for this topic to publish it on NimLearn!`);
+          if (typeof window.NimLearnUI !== "undefined" && window.NimLearnUI.showToast) {
+            window.NimLearnUI.showToast(`Topic: "${topicTitle}". Send content to publish!`);
+          } else {
+            alert(`Topic: "${topicTitle}"\nProvide content for this topic to publish it on NimLearn!`);
+          }
         }
       });
     });
