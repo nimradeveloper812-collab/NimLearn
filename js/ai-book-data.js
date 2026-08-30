@@ -433,14 +433,224 @@ const AIBookData = {
           chapterNumber: 3,
           title: "How AI Actually Works",
           topics: [
-            { id: "ch3-t1", title: "Data", content: null },
-            { id: "ch3-t2", title: "Algorithms", content: null },
-            { id: "ch3-t3", title: "Models", content: null },
-            { id: "ch3-t4", title: "Training", content: null },
-            { id: "ch3-t5", title: "Testing", content: null },
-            { id: "ch3-t6", title: "Inference", content: null },
-            { id: "ch3-t7", title: "Predictions", content: null },
-            { id: "ch3-t8", title: "Feedback and improvement", content: null }
+            {
+              id: "ch3-t1",
+              title: "Data",
+              content: `
+                <p class="article-lead">When people use an AI system, the experience looks simple: <em>You give AI an input → AI gives you an answer.</em> Behind that simple interaction is a large technical process powered by <strong>Data</strong>.</p>
+
+                <h2>What is Data?</h2>
+                <p><strong>Data is the information from which an AI system learns, analyzes, or makes decisions.</strong> Data is the raw material of modern AI systems. Just as humans learn from experience and observation, AI learns patterns from digital data.</p>
+
+                <h2>Types of Data</h2>
+                <div style="display: flex; flex-direction: column; gap: 1rem; margin: 1.5rem 0;">
+                  <div style="background: var(--bg-surface); border: 1px solid var(--border-color); padding: 1rem; border-radius: var(--radius-md);">
+                    <h4 style="color: var(--accent-primary); margin-bottom: 0.35rem;">Structured Data</h4>
+                    <p style="margin: 0; font-size: 0.95rem;">Organized into predefined rows and columns in spreadsheets and databases (e.g., age, income, purchase counts).</p>
+                  </div>
+                  <div style="background: var(--bg-surface); border: 1px solid var(--border-color); padding: 1rem; border-radius: var(--radius-md);">
+                    <h4 style="color: var(--accent-primary); margin-bottom: 0.35rem;">Unstructured Data</h4>
+                    <p style="margin: 0; font-size: 0.95rem;">Does not fit into simple tables (e.g., photos, videos, audio recordings, books, social media posts).</p>
+                  </div>
+                  <div style="background: var(--bg-surface); border: 1px solid var(--border-color); padding: 1rem; border-radius: var(--radius-md);">
+                    <h4 style="color: var(--accent-primary); margin-bottom: 0.35rem;">Labeled vs Unlabeled Data</h4>
+                    <p style="margin: 0; font-size: 0.95rem;">Labeled data includes desired target answers (e.g., <code>Photo → Cat</code>). Unlabeled data contains raw inputs without explicit targets.</p>
+                  </div>
+                </div>
+
+                <div class="callout-box">
+                  <div class="callout-icon">⚠️</div>
+                  <div class="callout-content">
+                    <h4>Data Quality: Garbage In, Garbage Out</h4>
+                    <p>Bad or mislabeled data produces bad AI predictions. Data must go through: <strong>Collection → Cleaning → Transformation → Labeling → Preparation</strong> before training.</p>
+                  </div>
+                </div>
+              `
+            },
+            {
+              id: "ch3-t2",
+              title: "Algorithms",
+              content: `
+                <p class="article-lead">An <strong>algorithm</strong> is a step-by-step procedure or set of rules for solving a problem. In AI, algorithms determine <em>how a system learns patterns from data</em>.</p>
+
+                <h2>Algorithm vs Model</h2>
+                <p>These two terms are frequently confused. Here is the key distinction:</p>
+
+                <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.95rem;">
+                  <thead>
+                    <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border-color); text-align: left;">
+                      <th style="padding: 0.75rem;">Component</th>
+                      <th style="padding: 0.75rem;">Analogy</th>
+                      <th style="padding: 0.75rem;">Role in AI</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr style="border-bottom: 1px solid var(--border-color);">
+                      <td style="padding: 0.75rem;"><strong>Algorithm</strong></td>
+                      <td style="padding: 0.75rem;">The Cooking Recipe</td>
+                      <td style="padding: 0.75rem;">The mathematical procedure that learns patterns</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border-color);">
+                      <td style="padding: 0.75rem;"><strong>Data</strong></td>
+                      <td style="padding: 0.75rem;">The Raw Ingredients</td>
+                      <td style="padding: 0.75rem;">The training examples provided</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border-color);">
+                      <td style="padding: 0.75rem;"><strong>Model</strong></td>
+                      <td style="padding: 0.75rem;">The Finished Dish</td>
+                      <td style="padding: 0.75rem;">The final trained computational system</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>Common AI algorithms include linear regression, decision trees, random forests, support vector machines, k-means clustering, and deep neural networks.</p>
+              `
+            },
+            {
+              id: "ch3-t3",
+              title: "Models",
+              content: `
+                <p class="article-lead">An <strong>AI model</strong> is a trained computational system that has learned mathematical parameters and relationships from data, allowing it to process new unseen inputs.</p>
+
+                <h2>Key Model Categories</h2>
+                <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem; line-height: 1.8;">
+                  <li><strong>Classification Model:</strong> Answers categorical questions (e.g., <code>Spam</code> or <code>Not Spam</code>).</li>
+                  <li><strong>Regression Model:</strong> Predicts continuous numerical values (e.g., estimated house price).</li>
+                  <li><strong>Recommendation Model:</strong> Ranks items a user is most likely to prefer.</li>
+                  <li><strong>Language Model:</strong> Generates next tokens or responses given textual prompts.</li>
+                </ul>
+
+                <div class="callout-box">
+                  <div class="callout-icon">💡</div>
+                  <div class="callout-content">
+                    <h4>Model ≠ Database</h4>
+                    <p>A database simply stores raw records. An AI model contains learned parameters (weights and biases) that represent patterns, allowing it to generalize to new data.</p>
+                  </div>
+                </div>
+              `
+            },
+            {
+              id: "ch3-t4",
+              title: "Training",
+              content: `
+                <p class="article-lead"><strong>Training</strong> is the iterative process through which a machine learning model learns patterns by processing training examples, making predictions, measuring errors, and adjusting parameters.</p>
+
+                <h2>The Training Loop</h2>
+                <p>The model improves through a continuous optimization cycle:</p>
+
+                <ol style="margin-left: 1.5rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                  <li><strong>Forward Pass:</strong> The model generates a prediction for a training input.</li>
+                  <li><strong>Loss Calculation:</strong> A <strong>loss function</strong> measures the mathematical error between the prediction and the target answer.</li>
+                  <li><strong>Gradient Descent:</strong> An optimization algorithm calculates error directions and updates model parameters to minimize loss.</li>
+                  <li><strong>Epochs:</strong> One <strong>epoch</strong> is a full pass through the entire training dataset.</li>
+                </ol>
+
+                <div class="article-quote">
+                  "A good AI model should generalize—learning useful underlying patterns that work on unseen data, rather than over-memorizing training examples (Overfitting)."
+                </div>
+              `
+            },
+            {
+              id: "ch3-t5",
+              title: "Testing",
+              content: `
+                <p class="article-lead">After training, we must evaluate whether the model actually generalizes to new, unseen data using <strong>Validation</strong> and <strong>Test datasets</strong>.</p>
+
+                <h2>Data Splitting</h2>
+                <div style="display: flex; flex-direction: column; gap: 1rem; margin: 1.5rem 0;">
+                  <div style="background: var(--bg-surface); border: 1px solid var(--border-color); padding: 1rem; border-radius: var(--radius-md);">
+                    <h4 style="color: var(--accent-primary); margin-bottom: 0.35rem;">Training Set</h4>
+                    <p style="margin: 0; font-size: 0.95rem;">Used by the algorithm to adjust weights and learn parameters.</p>
+                  </div>
+                  <div style="background: var(--bg-surface); border: 1px solid var(--border-color); padding: 1rem; border-radius: var(--radius-md);">
+                    <h4 style="color: var(--accent-primary); margin-bottom: 0.35rem;">Validation Set</h4>
+                    <p style="margin: 0; font-size: 0.95rem;">Used during development to tune hyperparameters and compare model versions.</p>
+                  </div>
+                  <div style="background: var(--bg-surface); border: 1px solid var(--border-color); padding: 1rem; border-radius: var(--radius-md);">
+                    <h4 style="color: var(--accent-primary); margin-bottom: 0.35rem;">Test Set</h4>
+                    <p style="margin: 0; font-size: 0.95rem;">Held out strictly for final evaluation on unseen real-world inputs.</p>
+                  </div>
+                </div>
+
+                <h2>Evaluation Metrics</h2>
+                <p>Models are assessed using metrics like Accuracy, Precision, Recall, F1 Score, and Mean Squared Error (MSE).</p>
+              `
+            },
+            {
+              id: "ch3-t6",
+              title: "Inference",
+              content: `
+                <p class="article-lead">Once a model is trained and deployed, running it on new user inputs to produce outputs is called <strong>Inference</strong>.</p>
+
+                <h2>Training vs Inference</h2>
+                <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.95rem;">
+                  <thead>
+                    <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border-color); text-align: left;">
+                      <th style="padding: 0.75rem;">Stage</th>
+                      <th style="padding: 0.75rem;">Action</th>
+                      <th style="padding: 0.75rem;">Flow</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr style="border-bottom: 1px solid var(--border-color);">
+                      <td style="padding: 0.75rem;"><strong>Training</strong></td>
+                      <td style="padding: 0.75rem;">Model is learning & adjusting weights</td>
+                      <td style="padding: 0.75rem;"><code>Data → Model adjusts parameters</code></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border-color);">
+                      <td style="padding: 0.75rem;"><strong>Inference</strong></td>
+                      <td style="padding: 0.75rem;">Model is using learned parameters</td>
+                      <td style="padding: 0.75rem;"><code>New Input → Trained Model → Output</code></td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>When you ask ChatGPT a question, upload an image for face unlock, or get a map route, you are executing <strong>Inference</strong>.</p>
+              `
+            },
+            {
+              id: "ch3-t7",
+              title: "Predictions",
+              content: `
+                <p class="article-lead">A <strong>prediction</strong> is the output generated by a model for a given input. In AI, "prediction" means determining the most likely output based on learned statistical patterns.</p>
+
+                <h2>Probabilistic Outputs</h2>
+                <p>AI predictions are typically probabilistic confidence scores rather than absolute guaranteed truths.</p>
+
+                <div class="callout-box">
+                  <div class="callout-icon">⚠️</div>
+                  <div class="callout-content">
+                    <h4>Prediction is Not Truth</h4>
+                    <p>An AI model can be highly confident and completely wrong. It produces outputs based on learned training patterns and lacks access to absolute ground truth. Critical domains (healthcare, law, safety) require human oversight.</p>
+                  </div>
+                </div>
+              `
+            },
+            {
+              id: "ch3-t8",
+              title: "Feedback and improvement",
+              content: `
+                <p class="article-lead">AI systems are not static after launch. Real-world performance requires continuous <strong>Feedback and Improvement</strong>.</p>
+
+                <h2>The Continuous AI Lifecycle Loop</h2>
+                <p>Modern machine learning systems follow an iterative improvement cycle:</p>
+
+                <div style="background: var(--bg-surface); border: 1px solid var(--border-color); padding: 1.25rem; border-radius: var(--radius-lg); margin: 1.5rem 0; font-family: monospace; font-size: 0.95rem; line-height: 1.7;">
+                  Collect Data → Train Model → Test Model → Deploy → Inference → Collect User Feedback → Identify Errors → Retrain & Update
+                </div>
+
+                <h2>Feedback Mechanisms</h2>
+                <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem; line-height: 1.8;">
+                  <li><strong>User Interactions:</strong> Clicks, skips, purchases, or explicit ratings (👍 / 👎).</li>
+                  <li><strong>Reinforcement Learning from Human Feedback (RLHF):</strong> Aligning model outputs with human preferences.</li>
+                  <li><strong>System Monitoring:</strong> Tracking model drift, new edge cases, and unexpected failures over time.</li>
+                </ul>
+
+                <div class="article-quote">
+                  "The core cycle of modern AI is: Learn → Evaluate → Use → Observe → Improve → Learn again."
+                </div>
+              `
+            }
           ]
         }
       ]
