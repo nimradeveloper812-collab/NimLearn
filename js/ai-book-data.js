@@ -663,29 +663,211 @@ const AIBookData = {
           chapterNumber: 4,
           title: "Machine Learning",
           topics: [
-            { id: "ch4-t1", title: "What is machine learning?", content: null },
-            { id: "ch4-t2", title: "Supervised learning", content: null },
-            { id: "ch4-t3", title: "Unsupervised learning", content: null },
-            { id: "ch4-t4", title: "Semi-supervised learning", content: null },
-            { id: "ch4-t5", title: "Reinforcement learning", content: null },
-            { id: "ch4-t6", title: "Classification", content: null },
-            { id: "ch4-t7", title: "Regression", content: null },
-            { id: "ch4-t8", title: "Clustering", content: null },
-            { id: "ch4-t9", title: "Real-world applications", content: null }
+            {
+              id: "ch4-t1",
+              title: "What is machine learning?",
+              content: `
+                <p class="article-lead">Machine Learning (ML) is a branch of Artificial Intelligence in which computer systems learn patterns from data and use those learned patterns to make predictions, decisions, or generate outputs on new data.</p>
+                
+                <h2>Traditional Programming vs Machine Learning</h2>
+                <p><strong>Traditional Programming:</strong> Rules + Data → Program → Output<br><strong>Machine Learning:</strong> Data + Examples → Learning Algorithm → Model → New Data → Prediction</p>
+
+                <div class="callout-box">
+                  <div class="callout-icon">💡</div>
+                  <div class="callout-content">
+                    <h4>Why Machine Learning is Powerful</h4>
+                    <p>Machine learning excels when rules are difficult to write manually, data is abundant, patterns are complex, environments change, or human-designed rules would be too numerous.</p>
+                  </div>
+                </div>
+              `
+            },
+            {
+              id: "ch4-t2",
+              title: "Supervised learning",
+              content: `
+                <p class="article-lead"><strong>Supervised learning</strong> is a machine-learning approach in which the model learns from labeled examples consisting of input-output pairs (<code>Input → Correct Output</code>).</p>
+                
+                <h2>Two Major Supervised Learning Tasks</h2>
+                <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem; line-height: 1.8;">
+                  <li><strong>Classification:</strong> Predicting a discrete category (e.g., Spam / Not Spam, Fraud / Not Fraud).</li>
+                  <li><strong>Regression:</strong> Predicting a continuous numerical value (e.g., house price, temperature, sales demand).</li>
+                </ul>
+              `
+            },
+            {
+              id: "ch4-t3",
+              title: "Unsupervised learning",
+              content: `
+                <p class="article-lead"><strong>Unsupervised learning</strong> uses data without predefined target labels and attempts to discover useful structure, clusters, or patterns within that data.</p>
+
+                <h2>Applications</h2>
+                <p>Common applications include customer segmentation, anomaly detection, document organization, pattern discovery, and data exploration.</p>
+              `
+            },
+            {
+              id: "ch4-t4",
+              title: "Semi-supervised learning",
+              content: `
+                <p class="article-lead"><strong>Semi-supervised learning</strong> combines a small amount of labeled data with a large amount of unlabeled data.</p>
+
+                <div class="callout-box">
+                  <div class="callout-icon">⚖️</div>
+                  <div class="callout-content">
+                    <h4>Why Semi-Supervised Learning Matters</h4>
+                    <p>In many real-world domains, collecting raw data is cheap, but obtaining high-quality expert labels is expensive. Semi-supervised learning leverages both effectively.</p>
+                  </div>
+                </div>
+              `
+            },
+            {
+              id: "ch4-t5",
+              title: "Reinforcement learning",
+              content: `
+                <p class="article-lead"><strong>Reinforcement Learning (RL)</strong> is a learning paradigm where an agent learns optimal decision-making by interacting with an environment and receiving rewards or penalties.</p>
+
+                <h2>The Feedback Cycle</h2>
+                <p><code>State → Action → Environment → Reward → New State</code></p>
+                <p>Unlike supervised learning (which provides exact correct answers), reinforcement learning provides reward feedback evaluating the consequences of actions.</p>
+              `
+            },
+            {
+              id: "ch4-t6",
+              title: "Classification",
+              content: `
+                <p class="article-lead"><strong>Classification</strong> is a machine-learning task in which an input is assigned to one or more predefined categories.</p>
+
+                <h2>Types of Classification</h2>
+                <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem; line-height: 1.8;">
+                  <li><strong>Binary Classification:</strong> Two categories (e.g., Spam vs Inbox).</li>
+                  <li><strong>Multi-Class Classification:</strong> More than two mutually exclusive categories (e.g., Cat, Dog, Horse, Bird).</li>
+                  <li><strong>Multi-Label Classification:</strong> Inputs assigned multiple categories simultaneously (e.g., Dog + Car + Tree).</li>
+                </ul>
+              `
+            },
+            {
+              id: "ch4-t7",
+              title: "Regression",
+              content: `
+                <p class="article-lead"><strong>Regression</strong> is a machine-learning task used to predict a continuous numerical quantity (e.g., house price, salary, temperature, sales demand).</p>
+
+                <h2>Simple Linear Regression</h2>
+                <p>Modeled mathematically as: <code>ŷ = b₀ + b₁x</code> where <code>ŷ</code> is predicted output, <code>b₀</code> is intercept, and <code>b₁</code> is slope.</p>
+              `
+            },
+            {
+              id: "ch4-t8",
+              title: "Clustering",
+              content: `
+                <p class="article-lead"><strong>Clustering</strong> is an unsupervised-learning technique that automatically groups similar data points together without predefined category labels.</p>
+
+                <h2>K-Means Clustering</h2>
+                <p>K-Means divides data into <em>K</em> clusters by iteratively assigning points to the nearest cluster center and updating centers until convergence.</p>
+              `
+            },
+            {
+              id: "ch4-t9",
+              title: "Real-world applications",
+              content: `
+                <p class="article-lead">Machine learning is applied across healthcare, banking & finance, e-commerce, education, transportation, social media, cybersecurity, agriculture, manufacturing, and entertainment.</p>
+
+                <div style="background: var(--bg-surface); border: 1px solid var(--border-color); padding: 1.25rem; border-radius: var(--radius-lg); margin-top: 1rem;">
+                  <h4 style="color: var(--accent-primary); margin-bottom: 0.5rem;">Key Takeaway</h4>
+                  <p style="margin: 0; font-size: 0.95rem;">Machine Learning teaches computers to learn from examples and experience represented by data, rather than requiring humans to explicitly program every rule.</p>
+                </div>
+              `
+            }
           ]
         },
         {
           chapterNumber: 5,
           title: "Neural Networks",
           topics: [
-            { id: "ch5-t1", title: "The artificial neuron", content: null },
-            { id: "ch5-t2", title: "Layers", content: null },
-            { id: "ch5-t3", title: "Weights and biases", content: null },
-            { id: "ch5-t4", title: "Activation functions", content: null },
-            { id: "ch5-t5", title: "Forward propagation", content: null },
-            { id: "ch5-t6", title: "Loss functions", content: null },
-            { id: "ch5-t7", title: "Backpropagation", content: null },
-            { id: "ch5-t8", title: "Training a neural network", content: null }
+            {
+              id: "ch5-t1",
+              title: "The artificial neuron",
+              content: `
+                <p class="article-lead">An <strong>artificial neuron</strong> is a mathematical unit that receives inputs, multiplies them by learned weights, adds a bias, and passes the sum through an activation function.</p>
+
+                <h2>Neuron Formula</h2>
+                <p><code>z = (w₁x₁ + w₂x₂ + ... + wₙxₙ) + b</code><br><code>a = f(z)</code></p>
+                <p>Where <strong>x</strong> is input, <strong>w</strong> is weight, <strong>b</strong> is bias, <strong>f</strong> is activation function, and <strong>a</strong> is output activation.</p>
+              `
+            },
+            {
+              id: "ch5-t2",
+              title: "Layers",
+              content: `
+                <p class="article-lead">A neural network connects neurons into layers: <strong>Input Layer → Hidden Layers → Output Layer</strong>.</p>
+
+                <h2>Hierarchical Representation</h2>
+                <p>Hidden layers extract increasingly complex features from data (e.g., <strong>Pixels → Edges → Shapes → Objects</strong>). Networks with many hidden layers are called <strong>Deep Neural Networks</strong>.</p>
+              `
+            },
+            {
+              id: "ch5-t3",
+              title: "Weights and biases",
+              content: `
+                <p class="article-lead"><strong>Weights</strong> determine how strongly an input influences a neuron. <strong>Biases</strong> shift the activation baseline to provide mathematical flexibility.</p>
+                <p>During training, weights and biases are iteratively updated to minimize prediction error.</p>
+              `
+            },
+            {
+              id: "ch5-t4",
+              title: "Activation functions",
+              content: `
+                <p class="article-lead">Activation functions introduce <strong>nonlinearity</strong> into neural networks, allowing them to model complex real-world relationships.</p>
+
+                <h2>Common Activation Functions</h2>
+                <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem; line-height: 1.8;">
+                  <li><strong>ReLU:</strong> <code>max(0, x)</code> — Most popular in deep hidden layers.</li>
+                  <li><strong>Sigmoid:</strong> Maps outputs into <code>0 to 1</code> — Common for binary classification outputs.</li>
+                  <li><strong>Softmax:</strong> Converts output vectors into normalized probability distributions summing to 1.</li>
+                </ul>
+              `
+            },
+            {
+              id: "ch5-t5",
+              title: "Forward propagation",
+              content: `
+                <p class="article-lead"><strong>Forward propagation</strong> is the process of passing input data forward through the network layers to calculate an output prediction.</p>
+                <p>Flow: <code>Input → Layer 1 → Layer 2 → ... → Output Prediction</code></p>
+              `
+            },
+            {
+              id: "ch5-t6",
+              title: "Loss functions",
+              content: `
+                <p class="article-lead">A <strong>loss function</strong> measures the mathematical difference between the model's prediction and the true target answer.</p>
+
+                <h2>Common Loss Functions</h2>
+                <p><strong>Cross-Entropy Loss</strong> (for classification) and <strong>Mean Squared Error (MSE)</strong> (for regression).</p>
+              `
+            },
+            {
+              id: "ch5-t7",
+              title: "Backpropagation",
+              content: `
+                <p class="article-lead"><strong>Backpropagation</strong> is the algorithm for efficiently computing loss gradients with respect to every weight and bias using the chain rule of calculus.</p>
+
+                <h2>Backpropagation vs Gradient Descent</h2>
+                <p><strong>Backpropagation:</strong> Computes the gradient error directions.<br><strong>Gradient Descent / Optimizer (e.g. Adam):</strong> Uses gradients to update weights and biases.</p>
+              `
+            },
+            {
+              id: "ch5-t8",
+              title: "Training a neural network",
+              content: `
+                <p class="article-lead">Training is the complete repeated cycle of optimization across epochs and mini-batches.</p>
+
+                <div style="background: var(--bg-surface); border: 1px solid var(--border-color); padding: 1.25rem; border-radius: var(--radius-lg); margin: 1.5rem 0; font-family: monospace; font-size: 0.95rem; line-height: 1.7;">
+                  Input Data → Forward Pass → Loss Calculation → Backpropagation → Gradient Computation → Weight Updates
+                </div>
+
+                <div class="article-quote">
+                  "A neural network learns not because someone manually writes every rule into it, but because its parameters are repeatedly adjusted so that its outputs become better according to a chosen objective."
+                </div>
+              `
+            }
           ]
         },
         {
