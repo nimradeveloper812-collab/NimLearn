@@ -328,6 +328,86 @@ function initCategoryPage() {
   if (!categoryGrid || !categorySlug) return;
   if (typeof window.NimLearnDB === "undefined") return;
 
+  // AI Category Special Book Layout Rendering
+  if (categorySlug === "artificial-intelligence" && typeof window.AIBookData !== "undefined") {
+    const book = window.AIBookData;
+
+    categoryGrid.className = "book-syllabus-wrapper";
+
+    const partsHTML = book.parts
+      .map((part) => {
+        const chaptersHTML = part.chapters
+          .map((chap) => {
+            const topicsHTML = chap.topics
+              .map((top) => {
+                const statusTag = top.content ? '<span class="book-topic-status has-content">Read</span>' : '<span class="book-topic-status">Pending</span>';
+                return `
+                  <li class="book-topic-item" data-topic-id="${top.id}">
+                    <span class="book-topic-bullet">•</span>
+                    <span>${top.title}</span>
+                    ${statusTag}
+                  </li>
+                `;
+              })
+              .join("");
+
+            return `
+              <div class="book-chapter-card">
+                <div class="book-chapter-num">Chapter ${chap.chapterNumber}</div>
+                <h4 class="book-chapter-title">${chap.title}</h4>
+                <ul class="book-topics-list">
+                  ${topicsHTML}
+                </ul>
+              </div>
+            `;
+          })
+          .join("");
+
+        return `
+          <div class="book-part-card">
+            <div class="book-part-header">
+              <div class="book-part-label">${part.partNumber}</div>
+              <h3 class="book-part-title">${part.title}</h3>
+            </div>
+            <div class="book-chapters-grid">
+              ${chaptersHTML}
+            </div>
+          </div>
+        `;
+      })
+      .join("");
+
+    categoryGrid.innerHTML = `
+      <div class="book-header-banner">
+        <div class="book-badge">📘 OFFICIAL BOOK SYLLABUS</div>
+        <h2 class="book-main-title">${book.title}</h2>
+        <p class="book-main-tagline">${book.tagline}</p>
+        <div class="book-stats-strip">
+          <div class="book-stat-item">📦 <span>7 Parts</span></div>
+          <div class="book-stat-item">📖 <span>27 Chapters</span></div>
+          <div class="book-stat-item">📝 <span>180+ Topics</span></div>
+          <div class="book-stat-item">📌 <span>Send topic content to publish</span></div>
+        </div>
+      </div>
+      <div class="book-parts-grid">
+        ${partsHTML}
+      </div>
+    `;
+
+    categoryGrid.querySelectorAll(".book-topic-item").forEach((item) => {
+      item.addEventListener("click", () => {
+        const topicTitle = item.querySelector("span:nth-child(2)").textContent;
+        if (typeof window.NimLearnUI !== "undefined" && window.NimLearnUI.showToast) {
+          window.NimLearnUI.showToast(`Topic: "${topicTitle}". Send content to publish!`);
+        } else {
+          alert(`Topic: "${topicTitle}"\nProvide content for this topic to publish it on NimLearn!`);
+        }
+      });
+    });
+
+    return;
+  }
+
   const categoryArticles = window.NimLearnDB.getArticlesByCategory(categorySlug);
 
   if (categoryArticles.length === 0) {
