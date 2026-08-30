@@ -1083,14 +1083,89 @@ const AIBookData = {
           chapterNumber: 8,
           title: "Computer Vision",
           topics: [
-            { id: "ch8-t1", title: "How machines see", content: null },
-            { id: "ch8-t2", title: "Images as data", content: null },
-            { id: "ch8-t3", title: "Image classification", content: null },
-            { id: "ch8-t4", title: "Object detection", content: null },
-            { id: "ch8-t5", title: "Facial recognition", content: null },
-            { id: "ch8-t6", title: "Image segmentation", content: null },
-            { id: "ch8-t7", title: "Medical imaging", content: null },
-            { id: "ch8-t8", title: "Autonomous vehicles", content: null }
+            {
+              id: "ch8-t1",
+              title: "How machines see",
+              content: `
+                <p class="article-lead"><strong>Computer Vision</strong> enables machines to process, analyze, and interpret visual data (images, video, camera streams) by converting sensory inputs into numerical matrices.</p>
+
+                <h2>Human vs Machine Vision</h2>
+                <p>Humans perceive visual scenes through eyes and neurological processing. Machines process pixel matrices, extracting edges, textures, shapes, and object structures hierarchically.</p>
+              `
+            },
+            {
+              id: "ch8-t2",
+              title: "Images as data",
+              content: `
+                <p class="article-lead">An image is a multi-dimensional array or tensor of numerical pixel values.</p>
+
+                <h2>Pixel Representations</h2>
+                <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem; line-height: 1.8;">
+                  <li><strong>Grayscale:</strong> Single channel matrix with intensity values from <code>0 (Black)</code> to <code>255 (White)</code>.</li>
+                  <li><strong>RGB Color:</strong> 3-channel tensor (Red, Green, Blue) of size <code>Height × Width × 3</code>.</li>
+                  <li><strong>Data Augmentation:</strong> Transformations (cropping, flipping, rotation) expand training data diversity.</li>
+                </ul>
+              `
+            },
+            {
+              id: "ch8-t3",
+              title: "Image classification",
+              content: `
+                <p class="article-lead"><strong>Image Classification</strong> assigns one or more category labels to an entire input image.</p>
+                <p>Task types: Binary classification, Multi-class classification, Multi-label classification.</p>
+              `
+            },
+            {
+              id: "ch8-t4",
+              title: "Object detection",
+              content: `
+                <p class="article-lead"><strong>Object Detection</strong> identifies what objects are present in an image AND locates their spatial boundaries using bounding boxes.</p>
+
+                <h2>Classification vs Detection</h2>
+                <p><strong>Classification:</strong> <em>What is in the image?</em> (e.g. <code>Dog</code>)<br><strong>Detection:</strong> <em>What is in the image and where is it located?</em> (e.g. <code>Dog → Bounding Box Coordinates</code>)</p>
+              `
+            },
+            {
+              id: "ch8-t5",
+              title: "Facial recognition",
+              content: `
+                <p class="article-lead"><strong>Facial Recognition</strong> analyzes facial features to verify or identify individuals by mapping face images into numerical vector embeddings.</p>
+                <p>Distinction: <strong>Face Detection</strong> finds <em>where</em> faces are; <strong>Face Recognition</strong> verifies <em>who</em> the person is.</p>
+              `
+            },
+            {
+              id: "ch8-t6",
+              title: "Image segmentation",
+              content: `
+                <p class="article-lead"><strong>Image Segmentation</strong> classifies individual pixels or regions in an image according to their object category or instance.</p>
+
+                <h2>Segmentation Types</h2>
+                <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem; line-height: 1.8;">
+                  <li><strong>Semantic Segmentation:</strong> Assigns every pixel a category label (e.g., Road, Sky, Car).</li>
+                  <li><strong>Instance Segmentation:</strong> Distinguishes separate individual object instances (e.g., Car 1 vs Car 2).</li>
+                  <li><strong>Panoptic Segmentation:</strong> Combines semantic and instance segmentation.</li>
+                </ul>
+              `
+            },
+            {
+              id: "ch8-t7",
+              title: "Medical imaging",
+              content: `
+                <p class="article-lead">Computer vision assists clinicians by analyzing medical scans (X-rays, CT, MRI, Ultrasound, Pathology) for diagnostic pattern recognition, tumor segmentation, and measurement analysis.</p>
+              `
+            },
+            {
+              id: "ch8-t8",
+              title: "Autonomous vehicles",
+              content: `
+                <p class="article-lead">Autonomous driving relies on multi-sensor perception pipelines (Cameras, LiDAR, Radar, Ultrasonic) combined via <strong>Sensor Fusion</strong> to detect lanes, vehicles, traffic signs, and pedestrians in real time.</p>
+
+                <div style="background: var(--bg-surface); border: 1px solid var(--border-color); padding: 1.25rem; border-radius: var(--radius-lg); margin-top: 1rem;">
+                  <h4 style="color: var(--accent-primary); margin-bottom: 0.5rem;">Vision Hierarchy Summary</h4>
+                  <p style="margin: 0; font-size: 0.95rem;"><strong>Classification:</strong> What is this? | <strong>Detection:</strong> What & Where? | <strong>Segmentation:</strong> Which exact pixels?</p>
+                </div>
+              `
+            }
           ]
         }
       ]
@@ -1103,14 +1178,96 @@ const AIBookData = {
           chapterNumber: 9,
           title: "Generative AI",
           topics: [
-            { id: "ch9-t1", title: "What is Generative AI?", content: null },
-            { id: "ch9-t2", title: "Generative vs predictive AI", content: null },
-            { id: "ch9-t3", title: "Text generation", content: null },
-            { id: "ch9-t4", title: "Image generation", content: null },
-            { id: "ch9-t5", title: "Audio generation", content: null },
-            { id: "ch9-t6", title: "Video generation", content: null },
-            { id: "ch9-t7", title: "Code generation", content: null },
-            { id: "ch9-t8", title: "How generative models learn", content: null }
+            {
+              id: "ch9-t1",
+              title: "What is Generative AI?",
+              content: `
+                <p class="article-lead"><strong>Generative AI</strong> is a branch of artificial intelligence that creates original new content (text, images, audio, video, code, 3D assets) based on patterns learned from training data.</p>
+
+                <div class="callout-box">
+                  <div class="callout-icon">🎨</div>
+                  <div class="callout-content">
+                    <h4>The Core Generative Cycle</h4>
+                    <p><strong>Learn Patterns → Build Latent Model → Receive Prompt → Synthesize New Original Content</strong></p>
+                  </div>
+                </div>
+              `
+            },
+            {
+              id: "ch9-t2",
+              title: "Generative vs predictive AI",
+              content: `
+                <p class="article-lead">Predictive AI estimates classes or future values; Generative AI synthesizes new content.</p>
+
+                <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.95rem;">
+                  <thead>
+                    <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border-color); text-align: left;">
+                      <th style="padding: 0.75rem;">Predictive AI</th>
+                      <th style="padding: 0.75rem;">Generative AI</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr style="border-bottom: 1px solid var(--border-color);">
+                      <td style="padding: 0.75rem;">Estimates outcomes / classes</td>
+                      <td style="padding: 0.75rem;">Creates new media / outputs</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border-color);">
+                      <td style="padding: 0.75rem;">Fraud detection, churn prediction</td>
+                      <td style="padding: 0.75rem;">Article generation, image synthesis</td>
+                    </tr>
+                  </tbody>
+                </table>
+              `
+            },
+            {
+              id: "ch9-t3",
+              title: "Text generation",
+              content: `
+                <p class="article-lead">Language models generate text autoregressively token by token by calculating probability distributions given prior context (<code>P(token_next | context)</code>).</p>
+              `
+            },
+            {
+              id: "ch9-t4",
+              title: "Image generation",
+              content: `
+                <p class="article-lead">Modern text-to-image synthesis uses <strong>Diffusion Models</strong> that learn to reverse a gradual Gaussian noise addition process, guided by text embeddings.</p>
+
+                <p>Flow: <code>Random Gaussian Noise → Denoising Steps → Conditioned Text Guidance → Photorealistic Image</code></p>
+              `
+            },
+            {
+              id: "ch9-t5",
+              title: "Audio generation",
+              content: `
+                <p class="article-lead">Audio generative models create natural Text-to-Speech (TTS), music compositions, and sound effects by modeling numerical audio waveform signals.</p>
+              `
+            },
+            {
+              id: "ch9-t6",
+              title: "Video generation",
+              content: `
+                <p class="article-lead">Video generation extends image synthesis across time, requiring high <strong>Temporal Consistency</strong> so objects, lighting, and motion remain coherent frame-to-frame.</p>
+              `
+            },
+            {
+              id: "ch9-t7",
+              title: "Code generation",
+              content: `
+                <p class="article-lead">AI code generators convert natural language instructions into working computer code (Python, JS, C#, SQL) by learning formal syntax patterns across open-source code repositories.</p>
+              `
+            },
+            {
+              id: "ch9-t8",
+              title: "How generative models learn",
+              content: `
+                <p class="article-lead">Generative models optimize billions of parameters across massive datasets via Autoregressive prediction, Diffusion denoising, or GAN/VAE architectures.</p>
+
+                <div style="background: var(--bg-surface); border: 1px solid var(--border-color); padding: 1.25rem; border-radius: var(--radius-lg); margin-top: 1rem;">
+                  <h4 style="color: var(--accent-primary); margin-bottom: 0.5rem;">Key Takeaway</h4>
+                  <p style="margin: 0; font-size: 0.95rem;">Training Data → Learned Latent Patterns → Generative Model → Prompt Input → New Content Synthesis</p>
+                </div>
+              `
+            }
           ]
         },
         {
