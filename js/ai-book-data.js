@@ -874,28 +874,209 @@ const AIBookData = {
           chapterNumber: 6,
           title: "Deep Learning",
           topics: [
-            { id: "ch6-t1", title: "What makes deep learning different?", content: null },
-            { id: "ch6-t2", title: "Deep neural networks", content: null },
-            { id: "ch6-t3", title: "CNNs", content: null },
-            { id: "ch6-t4", title: "RNNs", content: null },
-            { id: "ch6-t5", title: "LSTMs", content: null },
-            { id: "ch6-t6", title: "Transformers", content: null },
-            { id: "ch6-t7", title: "Applications of deep learning", content: null }
+            {
+              id: "ch6-t1",
+              title: "What makes deep learning different?",
+              content: `
+                <p class="article-lead"><strong>Deep Learning</strong> is a subfield of machine learning that uses multi-layered neural networks to learn hierarchical representations directly from raw data.</p>
+                
+                <h2>Representation Learning vs Feature Engineering</h2>
+                <p><strong>Traditional ML:</strong> Requires humans to manually craft features.<br><strong>Deep Learning:</strong> Automatically discovers representations (e.g., <code>Pixels → Edges → Shapes → Objects</code>).</p>
+
+                <div class="callout-box">
+                  <div class="callout-icon">🚀</div>
+                  <div class="callout-content">
+                    <h4>Pillars of Deep Learning Power</h4>
+                    <p>Driven by massive datasets, GPU hardware acceleration, advanced optimization algorithms, modern software frameworks, and model scale.</p>
+                  </div>
+                </div>
+              `
+            },
+            {
+              id: "ch6-t2",
+              title: "Deep neural networks",
+              content: `
+                <p class="article-lead">A <strong>Deep Neural Network (DNN)</strong> contains multiple hidden layers between input and output, enabling hierarchical representation learning across millions or billions of parameters.</p>
+
+                <h2>Hierarchical Representation Flow</h2>
+                <p><code>Raw Input → Early Layers (Simple Edges) → Middle Layers (Textures/Shapes) → Deep Layers (Objects/Concepts) → Prediction</code></p>
+              `
+            },
+            {
+              id: "ch6-t3",
+              title: "CNNs",
+              content: `
+                <p class="article-lead"><strong>Convolutional Neural Networks (CNNs)</strong> process grid-like spatial data (images/video) using localized convolution filters, shared parameters, and feature maps.</p>
+
+                <h2>Convolution & Pooling</h2>
+                <p>Kernels slide across pixel matrices to extract localized visual patterns (edges, corners, features), while pooling layers downsample representation size.</p>
+              `
+            },
+            {
+              id: "ch6-t4",
+              title: "RNNs",
+              content: `
+                <p class="article-lead"><strong>Recurrent Neural Networks (RNNs)</strong> process sequential data (text, time-series, audio) by maintaining an internal hidden state across time steps (<code>h_t = f(x_t, h_{t-1})</code>).</p>
+
+                <div class="callout-box">
+                  <div class="callout-icon">⚠️</div>
+                  <div class="callout-content">
+                    <h4>Vanishing & Exploding Gradients</h4>
+                    <p>Standard RNNs struggle with long sequences because backpropagating gradients over many steps can exponentially decay to zero or explode to infinity.</p>
+                  </div>
+                </div>
+              `
+            },
+            {
+              id: "ch6-t5",
+              title: "LSTMs",
+              content: `
+                <p class="article-lead"><strong>Long Short-Term Memory (LSTM)</strong> networks solve the vanishing gradient problem using gated cell states (Forget Gate, Input Gate, Output Gate) to regulate long-range memory.</p>
+
+                <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.95rem;">
+                  <thead>
+                    <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border-color); text-align: left;">
+                      <th style="padding: 0.75rem;">Gate</th>
+                      <th style="padding: 0.75rem;">Function</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr style="border-bottom: 1px solid var(--border-color);">
+                      <td style="padding: 0.75rem;"><strong>Forget Gate</strong></td>
+                      <td style="padding: 0.75rem;">Discards irrelevant past memory</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border-color);">
+                      <td style="padding: 0.75rem;"><strong>Input Gate</strong></td>
+                      <td style="padding: 0.75rem;">Stores new incoming information into cell state</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border-color);">
+                      <td style="padding: 0.75rem;"><strong>Output Gate</strong></td>
+                      <td style="padding: 0.75rem;">Exposes cell state memory to current hidden output</td>
+                    </tr>
+                  </tbody>
+                </table>
+              `
+            },
+            {
+              id: "ch6-t6",
+              title: "Transformers",
+              content: `
+                <p class="article-lead">Introduced in 2017 (<em>"Attention Is All You Need"</em>), <strong>Transformers</strong> use parallel self-attention mechanisms (Query, Key, Value) to model token relationships regardless of distance.</p>
+
+                <h2>Self-Attention Formula</h2>
+                <p><code>Attention(Q,K,V) = softmax((QKᵀ) / √dₖ) V</code></p>
+                <p>Transformers enable massive parallel GPU training and form the core foundation of modern Large Language Models (LLMs) and Multimodal AI.</p>
+              `
+            },
+            {
+              id: "ch6-t7",
+              title: "Applications of deep learning",
+              content: `
+                <p class="article-lead">Deep learning powers Computer Vision, Speech Recognition, NLP, Generative AI, Healthcare, Autonomous Vehicles, Recommendation Systems, Cybersecurity, Robotics, and Scientific Research.</p>
+
+                <div style="background: var(--bg-surface); border: 1px solid var(--border-color); padding: 1.25rem; border-radius: var(--radius-lg); margin-top: 1rem;">
+                  <h4 style="color: var(--accent-primary); margin-bottom: 0.5rem;">Architecture Comparison Summary</h4>
+                  <p style="margin: 0; font-size: 0.95rem;"><strong>CNN:</strong> Spatial Image Patterns | <strong>RNN/LSTM:</strong> Sequential Steps | <strong>Transformer:</strong> Parallel Self-Attention Relationships</p>
+                </div>
+              `
+            }
           ]
         },
         {
           chapterNumber: 7,
           title: "Natural Language Processing",
           topics: [
-            { id: "ch7-t1", title: "How computers understand language", content: null },
-            { id: "ch7-t2", title: "Text processing", content: null },
-            { id: "ch7-t3", title: "Tokens", content: null },
-            { id: "ch7-t4", title: "Embeddings", content: null },
-            { id: "ch7-t5", title: "Sentiment analysis", content: null },
-            { id: "ch7-t6", title: "Translation", content: null },
-            { id: "ch7-t7", title: "Text generation", content: null },
-            { id: "ch7-t8", title: "Chatbots", content: null },
-            { id: "ch7-t9", title: "Large Language Models", content: null }
+            {
+              id: "ch7-t1",
+              title: "How computers understand language",
+              content: `
+                <p class="article-lead">Natural Language Processing (NLP) enables computers to process, analyze, understand, and generate human language by converting raw text into numerical representations.</p>
+
+                <h2>Challenges in Language</h2>
+                <p>Language involves contextual ambiguity (e.g., <em>river bank</em> vs <em>financial bank</em>), word order sensitivity, and implicit cultural context.</p>
+              `
+            },
+            {
+              id: "ch7-t2",
+              title: "Text processing",
+              content: `
+                <p class="article-lead">Text processing prepares raw text for machine learning models through normalization, tokenization, language detection, and formatting.</p>
+              `
+            },
+            {
+              id: "ch7-t3",
+              title: "Tokens",
+              content: `
+                <p class="article-lead">A <strong>token</strong> is a fundamental unit of text (word, subword, or character) processed by a language model.</p>
+
+                <h2>Subword Tokenization</h2>
+                <p>Subword tokenization (e.g., BPE, WordPiece) splits rare or unknown words into smaller sub-units (e.g., <code>intelligence → intelli + gence</code>), allowing models to handle infinite vocabularies efficiently.</p>
+              `
+            },
+            {
+              id: "ch7-t4",
+              title: "Embeddings",
+              content: `
+                <p class="article-lead">An <strong>embedding</strong> is a high-dimensional continuous vector representation that maps tokens into geometric space based on semantic meaning and context.</p>
+
+                <h2>Semantic Search</h2>
+                <p>Embeddings power semantic search by matching query meaning vectors rather than exact keyword text strings.</p>
+              `
+            },
+            {
+              id: "ch7-t5",
+              title: "Sentiment analysis",
+              content: `
+                <p class="article-lead"><strong>Sentiment analysis</strong> classifies text by emotional tone or attitude (Positive, Negative, Neutral).</p>
+                <p>Used extensively in product reviews, brand monitoring, social media analytics, and customer feedback.</p>
+              `
+            },
+            {
+              id: "ch7-t6",
+              title: "Translation",
+              content: `
+                <p class="article-lead"><strong>Neural Machine Translation (NMT)</strong> translates text across languages by learning deep sequence-to-sequence mappings with attention mechanisms.</p>
+              `
+            },
+            {
+              id: "ch7-t7",
+              title: "Text generation",
+              content: `
+                <p class="article-lead"><strong>Autoregressive text generation</strong> predicts likely next tokens iteratively given prior context.</p>
+
+                <div class="callout-box">
+                  <div class="callout-icon">⚠️</div>
+                  <div class="callout-content">
+                    <h4>Hallucination</h4>
+                    <p>Language models generate fluent continuations based on statistical probabilities; fluency does not guarantee factual truth. Unverified confident outputs are termed <strong>hallucinations</strong>.</p>
+                  </div>
+                </div>
+              `
+            },
+            {
+              id: "ch7-t8",
+              title: "Chatbots",
+              content: `
+                <p class="article-lead">Modern AI Chatbots combine Large Language Models with conversation context, <strong>Retrieval-Augmented Generation (RAG)</strong>, and external API tool integration.</p>
+
+                <p>Flow: <code>User Query → RAG Document Search → LLM Context Reasoning → Tool Execution → Output Response</code></p>
+              `
+            },
+            {
+              id: "ch7-t9",
+              title: "Large Language Models",
+              content: `
+                <p class="article-lead">A <strong>Large Language Model (LLM)</strong> is a massive Transformer neural network trained on vast text datasets across billions of parameters.</p>
+
+                <h2>The LLM Pipeline</h2>
+                <p><code>Pretraining (Predict Next Token) → Instruction Tuning → RLHF Alignment → Fine-tuned Foundation Assistant</code></p>
+
+                <div style="background: var(--bg-surface); border: 1px solid var(--border-color); padding: 1.25rem; border-radius: var(--radius-lg); margin-top: 1rem;">
+                  <h4 style="color: var(--accent-primary); margin-bottom: 0.5rem;">Key Takeaway</h4>
+                  <p style="margin: 0; font-size: 0.95rem;">Language AI transforms raw text into token embeddings, processes contextual relationships via Transformers, and generates output continuations based on learned semantic patterns.</p>
+                </div>
+              `
+            }
           ]
         },
         {
