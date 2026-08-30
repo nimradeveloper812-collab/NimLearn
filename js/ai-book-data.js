@@ -229,15 +229,204 @@ const AIBookData = {
           chapterNumber: 2,
           title: "A Brief History of AI",
           topics: [
-            { id: "ch2-t1", title: "The birth of the idea", content: null },
-            { id: "ch2-t2", title: "Alan Turing and machine intelligence", content: null },
-            { id: "ch2-t3", title: "The Dartmouth Conference", content: null },
-            { id: "ch2-t4", title: "Early AI systems", content: null },
-            { id: "ch2-t5", title: "Expert systems", content: null },
-            { id: "ch2-t6", title: "AI winters", content: null },
-            { id: "ch2-t7", title: "The rise of machine learning", content: null },
-            { id: "ch2-t8", title: "Deep learning revolution", content: null },
-            { id: "ch2-t9", title: "Generative AI era", content: null }
+            {
+              id: "ch2-t1",
+              title: "The birth of the idea",
+              content: `
+                <p class="article-lead">Artificial Intelligence did not appear suddenly with ChatGPT, robots, or modern computers. The idea has a much longer history. For centuries, humans imagined creating artificial beings capable of thinking or acting intelligently.</p>
+
+                <h2>The Dream Existed Before Computers</h2>
+                <p>Human beings have long imagined artificial entities that could imitate human abilities. Ancient mythology contains examples of artificial beings, mechanical servants, intelligent objects, and autonomous machines. While these were not AI systems in the modern scientific sense, they reveal an old human question: <em>Can intelligence be created artificially?</em></p>
+
+                <h2>The Mathematical Foundation</h2>
+                <p>During the 19th and early 20th centuries, researchers increasingly investigated whether human reasoning could be expressed through formal mathematical logic and symbols. If logical reasoning could be represented mathematically, perhaps machines could eventually perform some forms of reasoning.</p>
+
+                <div class="callout-box">
+                  <div class="callout-icon">💡</div>
+                  <div class="callout-content">
+                    <h4>The Crucial Insight</h4>
+                    <p><strong>If intelligent behavior can be represented as information processing, perhaps a computer can reproduce some aspects of that behavior.</strong></p>
+                  </div>
+                </div>
+
+                <h2>The Rise of Electronic Computing</h2>
+                <p>The development of electronic computers in the mid-20th century changed everything. Computers could store information, perform calculations, follow instructions, manipulate symbols, and execute logical operations. Suddenly, mechanizing reasoning moved from philosophy to practical science.</p>
+              `
+            },
+            {
+              id: "ch2-t2",
+              title: "Alan Turing and machine intelligence",
+              content: `
+                <p class="article-lead">One of the most important figures in the history of AI is British mathematician and computer scientist <strong>Alan Turing</strong>.</p>
+
+                <h2>Turing's Fundamental Question</h2>
+                <p>In 1950, Turing published an influential paper titled <em>"Computing Machinery and Intelligence."</em> He began with a provocative question: <strong>"Can machines think?"</strong></p>
+
+                <h2>The Imitation Game (Turing Test)</h2>
+                <p>Instead of defining "thinking", Turing proposed a practical evaluation. A human judge communicates via text with a machine and another human. If the judge cannot reliably distinguish the machine from the human based on conversation, the machine demonstrates significant intelligent behavior.</p>
+
+                <div class="article-quote">
+                  "Instead of asking 'Does the machine have a human mind?', Turing encouraged researchers to ask: 'Can the machine produce behavior indistinguishable from intelligent human behavior in a particular setting?'"
+                </div>
+
+                <h2>Turing and Learning Machines</h2>
+                <p>Turing recognized that building an intelligent machine might be easier through <strong>learning</strong> rather than attempting to directly program adult-level intelligence manually. He envisioned a "child machine" that could learn from experience—a concept central to modern machine learning.</p>
+              `
+            },
+            {
+              id: "ch2-t3",
+              title: "The Dartmouth Conference",
+              content: `
+                <p class="article-lead">The year <strong>1956</strong> is universally recognized as the formal birth of Artificial Intelligence as an academic research field.</p>
+
+                <h2>The Landmark Dartmouth Workshop</h2>
+                <p>Organized by John McCarthy, Marvin Minsky, Claude Shannon, and Nathaniel Rochester at Dartmouth College, this summer project brought together pioneers from mathematics, logic, psychology, computer science, and neuroscience.</p>
+
+                <div class="callout-box">
+                  <div class="callout-icon">🏛️</div>
+                  <div class="callout-content">
+                    <h4>Coining the Term "Artificial Intelligence"</h4>
+                    <p>John McCarthy proposed the term <strong>"Artificial Intelligence"</strong> to describe the discipline aimed at creating machines that simulate aspects of human learning and intelligence.</p>
+                  </div>
+                </div>
+
+                <h2>Early Optimism</h2>
+                <p>The Dartmouth researchers were immensely optimistic, believing that major progress toward human-level intelligence could be achieved in a relatively short period. However, real-world intelligence turned out to be far more complex than anticipated.</p>
+              `
+            },
+            {
+              id: "ch2-t4",
+              title: "Early AI systems",
+              content: `
+                <p class="article-lead">Following Dartmouth, researchers built early systems based on <strong>Symbolic AI</strong>—representing knowledge using symbols, explicit rules, and logical deductions.</p>
+
+                <h2>Key Early Symbolic AI Systems</h2>
+                <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem; line-height: 1.8;">
+                  <li><strong>Logic Theorist (1956):</strong> Developed by Newell, Simon, and Shaw to prove mathematical theorems using symbolic reasoning.</li>
+                  <li><strong>General Problem Solver (GPS):</strong> Aimed at solving diverse problems using unified general strategies.</li>
+                  <li><strong>ELIZA (1966):</strong> Created by Joseph Weizenbaum, simulating a psychotherapist via linguistic pattern-matching scripts.</li>
+                  <li><strong>Early Game AI:</strong> Chess and checkers programs provided controlled environments with clear rules to test machine strategy.</li>
+                </ul>
+
+                <div class="article-quote">
+                  "Early systems performed impressively in controlled puzzle environments, but stumbled when faced with the messy, unconstrained real world."
+                </div>
+              `
+            },
+            {
+              id: "ch2-t5",
+              title: "Expert systems",
+              content: `
+                <p class="article-lead">By the 1970s and 1980s, <strong>Expert Systems</strong> became the dominant commercial and academic AI approach, attempting to encode the knowledge of human domain experts into computer rules.</p>
+
+                <h2>Architecture of an Expert System</h2>
+                <p>An expert system consists of two main components:</p>
+
+                <div style="display: flex; flex-direction: column; gap: 1rem; margin: 1.5rem 0;">
+                  <div style="background: var(--bg-surface); border: 1px solid var(--border-color); padding: 1rem; border-radius: var(--radius-md);">
+                    <h4 style="color: var(--accent-primary); margin-bottom: 0.35rem;">1. Knowledge Base</h4>
+                    <p style="margin: 0; font-size: 0.95rem;">Contains domain-specific facts, rules, and relationships (e.g., medical symptoms and diagnostic rules).</p>
+                  </div>
+                  <div style="background: var(--bg-surface); border: 1px solid var(--border-color); padding: 1rem; border-radius: var(--radius-md);">
+                    <h4 style="color: var(--accent-primary); margin-bottom: 0.35rem;">2. Inference Engine</h4>
+                    <p style="margin: 0; font-size: 0.95rem;">Applies logical rules to user input to deduce conclusions (e.g., <code>Facts + Rules → Inference → Conclusion</code>).</p>
+                  </div>
+                </div>
+
+                <h2>MYCIN & The Knowledge Bottleneck</h2>
+                <p>Systems like <strong>MYCIN</strong> (medical diagnosis) showed great success in narrow fields. However, expert systems suffered from the <strong>Knowledge Acquisition Bottleneck</strong>—extracting intuitive human expertise into hardcoded rules was laborious, rigid, and hard to maintain.</p>
+              `
+            },
+            {
+              id: "ch2-t6",
+              title: "AI winters",
+              content: `
+                <p class="article-lead">The history of AI is marked by periods of immense hype followed by funding cuts and skepticism—known as <strong>AI Winters</strong>.</p>
+
+                <h2>Causes of AI Winters</h2>
+                <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem; line-height: 1.8;">
+                  <li><strong>Unrealistic Expectations:</strong> Overpromising fast human-level AI led to disappointment when systems struggled with common sense.</li>
+                  <li><strong>Hardware Limitations:</strong> 1970s and 1980s computers lacked the memory and processing speed required for large datasets.</li>
+                  <li><strong>Maintenance Costs:</strong> Expert systems with thousands of rigid rules proved too expensive and brittle for real-world enterprise updates.</li>
+                </ul>
+
+                <div class="callout-box">
+                  <div class="callout-icon">❄️</div>
+                  <div class="callout-content">
+                    <h4>The Crucial Lesson</h4>
+                    <p><strong>Intelligence is much harder to reproduce than it initially appears. A system can perform impressively in a controlled lab setting while still failing in the complex real world.</strong></p>
+                  </div>
+                </div>
+              `
+            },
+            {
+              id: "ch2-t7",
+              title: "The rise of machine learning",
+              content: `
+                <p class="article-lead">In the 1990s, AI underwent a major paradigm shift: moving from <em>explicitly programming rules</em> to <em>learning patterns from data</em>.</p>
+
+                <h2>The Paradigm Shift</h2>
+                <p>Instead of humans writing every rule manually, machine learning algorithms analyze examples to discover statistical relationships automatically.</p>
+
+                <h2>Core Machine Learning Paradigms</h2>
+                <div style="display: flex; flex-direction: column; gap: 1rem; margin: 1.5rem 0;">
+                  <div style="background: var(--bg-surface); border: 1px solid var(--border-color); padding: 1rem; border-radius: var(--radius-md);">
+                    <h4 style="color: var(--accent-primary); margin-bottom: 0.35rem;">Supervised Learning</h4>
+                    <p style="margin: 0; font-size: 0.95rem;">Learns mapping from labeled input-output pairs (e.g., <code>Image → Cat</code>).</p>
+                  </div>
+                  <div style="background: var(--bg-surface); border: 1px solid var(--border-color); padding: 1rem; border-radius: var(--radius-md);">
+                    <h4 style="color: var(--accent-primary); margin-bottom: 0.35rem;">Unsupervised Learning</h4>
+                    <p style="margin: 0; font-size: 0.95rem;">Discovers hidden patterns and clusters in unlabeled data (e.g., customer segmentation).</p>
+                  </div>
+                  <div style="background: var(--bg-surface); border: 1px solid var(--border-color); padding: 1rem; border-radius: var(--radius-md);">
+                    <h4 style="color: var(--accent-primary); margin-bottom: 0.35rem;">Reinforcement Learning</h4>
+                    <p style="margin: 0; font-size: 0.95rem;">An agent learns optimal actions in an environment through reward and penalty feedback.</p>
+                  </div>
+                </div>
+              `
+            },
+            {
+              id: "ch2-t8",
+              title: "Deep learning revolution",
+              content: `
+                <p class="article-lead">Beginning around 2012, <strong>Deep Learning</strong> revolutionized AI through the convergence of massive digital data, GPU parallel processing, and deep neural network architectures.</p>
+
+                <h2>The 4 Pillars of the Deep Learning Breakthrough</h2>
+                <p><strong>Big Data + Massive Computing Power + GPU Acceleration + Deep Neural Networks = Revolution</strong></p>
+
+                <h2>AlexNet (2012)</h2>
+                <p>In 2012, AlexNet (by Alex Krizhevsky, Ilya Sutskever, and Geoffrey Hinton) crushed the competition in the ImageNet image-recognition contest using GPUs and deep convolutional neural networks (CNNs), proving deep learning's superiority for vision, speech, and natural language.</p>
+
+                <div class="callout-box">
+                  <div class="callout-icon">🚀</div>
+                  <div class="callout-content">
+                    <h4>Automatic Feature Representation</h4>
+                    <p>Instead of humans manually crafting image feature detectors, deep neural networks learn hierarchical representations directly from raw data (e.g., <strong>Pixels → Edges → Shapes → Parts → Objects</strong>).</p>
+                  </div>
+                </div>
+              `
+            },
+            {
+              id: "ch2-t9",
+              title: "Generative AI era",
+              content: `
+                <p class="article-lead">The modern era of AI is defined by <strong>Generative AI</strong> and <strong>Large Language Models (LLMs)</strong>—systems capable of creating new text, code, images, audio, and video.</p>
+
+                <h2>The Transformer Architecture (2017)</h2>
+                <p>Introduced in the landmark paper <em>"Attention Is All You Need"</em>, the <strong>Attention Mechanism</strong> allowed models to weigh relationships between all words in a sequence dynamically, enabling massive scalability.</p>
+
+                <h2>Large Language Models (LLMs) & AI Agents</h2>
+                <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem; line-height: 1.8;">
+                  <li><strong>Predictive Pre-training:</strong> Models learn language representations by predicting next tokens across massive datasets.</li>
+                  <li><strong>Multimodal Generation:</strong> Systems generate high-quality prose, computer code, photorealistic images, and audio from natural language prompts.</li>
+                  <li><strong>AI Agents:</strong> Beyond Q&A chatbots, modern AI agents autonomously plan multi-step workflows, use external tools, execute code, and solve complex goals.</li>
+                </ul>
+
+                <div class="article-quote">
+                  "The history of AI is the history of asking whether intelligence can be mechanized. Today, AI has transitioned from hardcoded rules to global generative assistants and autonomous agents."
+                </div>
+              `
+            }
           ]
         },
         {
