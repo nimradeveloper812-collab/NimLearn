@@ -1182,23 +1182,30 @@ const AIBookData = {
               id: "ch9-t1",
               title: "What is Generative AI?",
               content: `
-                <p class="article-lead"><strong>Generative AI</strong> is a branch of artificial intelligence that creates original new content (text, images, audio, video, code, 3D assets) based on patterns learned from training data.</p>
+                <p class="article-lead">Generative Artificial Intelligence (<strong>Generative AI</strong>) is a major branch of modern AI focused on <strong>creating new content</strong>. Unlike systems that only classify or predict outcomes, generative models can produce text, images, audio, video, code, 3D objects, and synthetic data.</p>
 
-                <div class="callout-box">
-                  <div class="callout-icon">🎨</div>
-                  <div class="callout-content">
-                    <h4>The Core Generative Cycle</h4>
-                    <p><strong>Learn Patterns → Build Latent Model → Receive Prompt → Synthesize New Original Content</strong></p>
-                  </div>
+                <h2>What is Generative AI?</h2>
+                <p>Generative AI learns patterns from existing data and uses those learned patterns to generate new content. The basic pipeline is:</p>
+
+                <div style="background: var(--bg-surface); border: 1px solid var(--border-color); padding: 1.25rem; border-radius: var(--radius-lg); margin: 1.5rem 0; font-family: monospace; font-size: 0.95rem; line-height: 1.7;">
+                  Training Data → Learning Patterns → Generative Model → Prompt/Input → Generated Content
                 </div>
+
+                <h2>Traditional AI vs Generative AI</h2>
+                <p>Imagine an image containing a cat:</p>
+                <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem; line-height: 1.8;">
+                  <li><strong>Traditional AI (Analyzes / Predicts):</strong> Outputs label <code>"Cat"</code>.</li>
+                  <li><strong>Generative AI (Creates):</strong> Generates descriptive prose: <em>"This is a small orange cat sitting beside a window"</em>, or synthesizes an entirely new photorealistic image of a cat.</li>
+                </ul>
               `
             },
             {
               id: "ch9-t2",
               title: "Generative vs predictive AI",
               content: `
-                <p class="article-lead">Predictive AI estimates classes or future values; Generative AI synthesizes new content.</p>
+                <p class="article-lead">Understanding the distinction between <strong>Predictive AI</strong> (estimating outcomes) and <strong>Generative AI</strong> (creating new content) is fundamental to modern AI architecture.</p>
 
+                <h2>Detailed Comparison</h2>
                 <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.95rem;">
                   <thead>
                     <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border-color); text-align: left;">
@@ -1208,63 +1215,150 @@ const AIBookData = {
                   </thead>
                   <tbody>
                     <tr style="border-bottom: 1px solid var(--border-color);">
-                      <td style="padding: 0.75rem;">Estimates outcomes / classes</td>
-                      <td style="padding: 0.75rem;">Creates new media / outputs</td>
+                      <td style="padding: 0.75rem;">Predicts an outcome or numerical value</td>
+                      <td style="padding: 0.75rem;">Generates original content or media</td>
                     </tr>
                     <tr style="border-bottom: 1px solid var(--border-color);">
-                      <td style="padding: 0.75rem;">Fraud detection, churn prediction</td>
-                      <td style="padding: 0.75rem;">Article generation, image synthesis</td>
+                      <td style="padding: 0.75rem;">Estimates what may happen (Classification/Regression)</td>
+                      <td style="padding: 0.75rem;">Produces new synthetic outputs</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border-color);">
+                      <td style="padding: 0.75rem;">Fraud detection, churn prediction, demand forecasting</td>
+                      <td style="padding: 0.75rem;">Writing emails, generating images/code/videos</td>
                     </tr>
                   </tbody>
                 </table>
+
+                <div class="callout-box">
+                  <div class="callout-icon">🤝</div>
+                  <div class="callout-content">
+                    <h4>Combining Predictive & Generative AI</h4>
+                    <p>Modern enterprise platforms combine both: <code>Customer Data → Predictive AI (Identify Likely Product) → Generative AI (Write Personalized Advertisement)</code>.</p>
+                  </div>
+                </div>
               `
             },
             {
               id: "ch9-t3",
               title: "Text generation",
               content: `
-                <p class="article-lead">Language models generate text autoregressively token by token by calculating probability distributions given prior context (<code>P(token_next | context)</code>).</p>
+                <p class="article-lead">Text generation involves producing natural-language prose from instructions, prompts, documents, or conversation history using probabilistic autoregressive models.</p>
+
+                <h2>Autoregressive Next-Token Prediction</h2>
+                <p>Language models process text as <strong>tokens</strong> and predict what token should come next by calculating probability distributions:</p>
+
+                <p style="font-family: monospace; text-align: center; background: var(--bg-surface); padding: 0.75rem; border-radius: var(--radius-sm);">P(next token | previous context)</p>
+
+                <div style="background: var(--bg-surface); border: 1px solid var(--border-color); padding: 1rem; border-radius: var(--radius-md); font-family: monospace; font-size: 0.95rem; margin: 1.5rem 0;">
+                  "Artificial intelligence is" → "changing" → "the" → "world"
+                </div>
+
+                <div class="callout-box">
+                  <div class="callout-icon">⚠️</div>
+                  <div class="callout-content">
+                    <h4>Hallucinations & Factuality</h4>
+                    <p>Fluent language does not guarantee factual accuracy. A model can produce highly convincing, grammatical, yet completely false outputs called <strong>hallucinations</strong>.</p>
+                  </div>
+                </div>
               `
             },
             {
               id: "ch9-t4",
               title: "Image generation",
               content: `
-                <p class="article-lead">Modern text-to-image synthesis uses <strong>Diffusion Models</strong> that learn to reverse a gradual Gaussian noise addition process, guided by text embeddings.</p>
+                <p class="article-lead">Image generation creates high-resolution visual artwork or photorealistic images from textual descriptions or reference images.</p>
 
-                <p>Flow: <code>Random Gaussian Noise → Denoising Steps → Conditioned Text Guidance → Photorealistic Image</code></p>
+                <h2>Diffusion Models</h2>
+                <p>Modern text-to-image systems rely primarily on <strong>Diffusion Models</strong>. During training, the model learns to reverse a process where noise is added to images:</p>
+
+                <div style="display: flex; flex-direction: column; gap: 1rem; margin: 1.5rem 0;">
+                  <div style="background: var(--bg-surface); border: 1px solid var(--border-color); padding: 1rem; border-radius: var(--radius-md);">
+                    <h4 style="color: var(--accent-primary); margin-bottom: 0.35rem;">Forward Process (Adding Noise)</h4>
+                    <p style="margin: 0; font-size: 0.95rem;"><code>Clean Image → Add Gaussian Noise → More Noise → Pure Random Noise</code></p>
+                  </div>
+                  <div style="background: var(--bg-surface); border: 1px solid var(--border-color); padding: 1rem; border-radius: var(--radius-md);">
+                    <h4 style="color: var(--accent-primary); margin-bottom: 0.35rem;">Reverse Process (Denoising Generation)</h4>
+                    <p style="margin: 0; font-size: 0.95rem;"><code>Pure Noise → Denoising Steps (Text Guidance) → Structural Emergence → Photorealistic Image</code></p>
+                  </div>
+                </div>
+
+                <h2>Image-to-Image Generation</h2>
+                <p>Generative AI can also modify existing images for style transfer, background replacement, restoration, and concept editing.</p>
               `
             },
             {
               id: "ch9-t5",
               title: "Audio generation",
               content: `
-                <p class="article-lead">Audio generative models create natural Text-to-Speech (TTS), music compositions, and sound effects by modeling numerical audio waveform signals.</p>
+                <p class="article-lead">Audio generative AI synthesizes human speech, music compositions, and sound effects from text prompts or symbolic representations.</p>
+
+                <h2>Core Audio Modalities</h2>
+                <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem; line-height: 1.8;">
+                  <li><strong>Text-to-Speech (TTS):</strong> Converts written text into natural human voice performances with realistic pitch, cadence, and intonation.</li>
+                  <li><strong>Music Generation:</strong> Generates instrumental or vocal tracks with structured melody, rhythm, harmony, and timbre.</li>
+                  <li><strong>Sound Effects Generation:</strong> Produces synthetic acoustic waveforms (e.g. rain on metal roofs, sci-fi engine hums).</li>
+                </ul>
               `
             },
             {
               id: "ch9-t6",
               title: "Video generation",
               content: `
-                <p class="article-lead">Video generation extends image synthesis across time, requiring high <strong>Temporal Consistency</strong> so objects, lighting, and motion remain coherent frame-to-frame.</p>
+                <p class="article-lead">Video generation extends image synthesis across time, modeling both <strong>Spatial Information</strong> (what each frame looks like) and <strong>Temporal Information</strong> (how objects move frame-to-frame).</p>
+
+                <h2>Temporal Consistency Challenge</h2>
+                <p>At 30 frames per second, a 10-second clip requires 300 frames. A robust video model must preserve <strong>Temporal Consistency</strong> so characters, clothing, lighting, and physics remain coherent across all frames.</p>
+
+                <div class="article-quote">
+                  "Maintaining character identity and physical motion without visual glitches across 300 consecutive frames makes video generation significantly more computationally demanding than single-image generation."
+                </div>
               `
             },
             {
               id: "ch9-t7",
               title: "Code generation",
               content: `
-                <p class="article-lead">AI code generators convert natural language instructions into working computer code (Python, JS, C#, SQL) by learning formal syntax patterns across open-source code repositories.</p>
+                <p class="article-lead">AI code generation converts natural-language requirements into working software programs across languages like Python, JavaScript, HTML, C#, Java, and SQL.</p>
+
+                <h2>Capabilities in Software Development</h2>
+                <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem; line-height: 1.8;">
+                  <li><strong>Code Completion:</strong> Autocompleting functions in real-time inside IDEs.</li>
+                  <li><strong>Code Explanation & Debugging:</strong> Explaining complex algorithms and identifying logic errors.</li>
+                  <li><strong>Refactoring & Test Generation:</strong> Writing clean unit tests and optimizing performance.</li>
+                </ul>
+
+                <div class="callout-box">
+                  <div class="callout-icon">💡</div>
+                  <div class="callout-content">
+                    <h4>Assistance, Not Automatic Correctness</h4>
+                    <p>AI-generated code must always be reviewed, tested, and validated by developers to ensure security, efficiency, and functional correctness.</p>
+                  </div>
+                </div>
               `
             },
             {
               id: "ch9-t8",
               title: "How generative models learn",
               content: `
-                <p class="article-lead">Generative models optimize billions of parameters across massive datasets via Autoregressive prediction, Diffusion denoising, or GAN/VAE architectures.</p>
+                <p class="article-lead">A generative model learns patterns by adjusting billions of parameters across training iterations to minimize loss and optimize generation quality.</p>
+
+                <h2>The 7-Step Generative Learning Cycle</h2>
+                <ol style="margin-left: 1.5rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                  <li><strong>Data Collection:</strong> Gathering massive multimodal text, image, audio, or video datasets.</li>
+                  <li><strong>Numerical Representation:</strong> Converting data into tokens, pixel tensors, or latent vectors.</li>
+                  <li><strong>Training Objective:</strong> Defining next-token prediction, noise reduction, or latent reconstruction.</li>
+                  <li><strong>Loss Calculation:</strong> Measuring mathematical error between model outputs and training targets.</li>
+                  <li><strong>Backpropagation:</strong> Computing error gradients across network layers.</li>
+                  <li><strong>Parameter Updates:</strong> Optimization algorithms adjust weights and biases.</li>
+                  <li><strong>Iterative Scaling:</strong> Repeating the training loop across billions of parameters.</li>
+                </ol>
+
+                <h2>Model Architecture Families</h2>
+                <p>Generative AI leverages <strong>Autoregressive Models</strong> (Sequential text), <strong>Diffusion Models</strong> (Denoising images), <strong>GANs</strong> (Generator vs Discriminator competition), and <strong>Variational Autoencoders (VAEs)</strong> (Latent space mappings).</p>
 
                 <div style="background: var(--bg-surface); border: 1px solid var(--border-color); padding: 1.25rem; border-radius: var(--radius-lg); margin-top: 1rem;">
-                  <h4 style="color: var(--accent-primary); margin-bottom: 0.5rem;">Key Takeaway</h4>
-                  <p style="margin: 0; font-size: 0.95rem;">Training Data → Learned Latent Patterns → Generative Model → Prompt Input → New Content Synthesis</p>
+                  <h4 style="color: var(--accent-primary); margin-bottom: 0.5rem;">The Ultimate Takeaway</h4>
+                  <p style="margin: 0; font-size: 0.95rem;"><strong>Training Data → Learned Latent Patterns → Generative Model → Prompt Input → New Content Synthesis</strong></p>
                 </div>
               `
             }
