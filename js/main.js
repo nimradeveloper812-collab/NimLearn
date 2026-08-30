@@ -176,15 +176,31 @@ function initHomepage() {
           </div>
         </div>
       `;
+    } else {
+      featuredContainer.innerHTML = `
+        <div style="text-align: center; padding: 3.5rem 1.5rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+          <div style="font-size: 2.5rem; margin-bottom: 0.75rem;">📚</div>
+          <h3 style="font-size: 1.35rem; font-weight: 800; margin-bottom: 0.5rem;">Syllabus Content Coming Soon</h3>
+          <p style="color: var(--text-secondary); max-width: 480px; margin: 0 auto;">Articles will be published here based on your upcoming syllabus topics across Artificial Intelligence, Computer Science, Psychology, and History of World.</p>
+        </div>
+      `;
     }
   }
 
   // Render Latest Articles Grid
   if (latestGrid) {
     const latestArticles = window.NimLearnDB.getLatestArticles(6);
-    latestGrid.innerHTML = latestArticles
-      .map((art) => window.NimLearnUI.generateArticleCardHTML(art))
-      .join("");
+    if (latestArticles.length > 0) {
+      latestGrid.innerHTML = latestArticles
+        .map((art) => window.NimLearnUI.generateArticleCardHTML(art))
+        .join("");
+    } else {
+      latestGrid.innerHTML = `
+        <div style="grid-column: 1 / -1; text-align: center; padding: 3rem 1.5rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-lg);">
+          <p style="color: var(--text-muted); font-size: 1.05rem;">No syllabus articles published yet. Content will automatically appear here as syllabus topics are added.</p>
+        </div>
+      `;
+    }
   }
 
   // Render 4 Category Cards
@@ -197,7 +213,7 @@ function initHomepage() {
           <h3 class="category-card-title">${cat.name}</h3>
           <p class="category-card-desc">${cat.description}</p>
           <div class="category-card-footer">
-            <span>${cat.count} Articles</span>
+            <span>${cat.count} ${cat.count === 1 ? 'Article' : 'Articles'}</span>
             <span>Explore →</span>
           </div>
         </a>
@@ -253,21 +269,10 @@ function initBlogPage() {
       blogGrid.innerHTML = `
         <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-lg);">
           <div style="font-size: 2.5rem; margin-bottom: 1rem;">🔍</div>
-          <h3 style="margin-bottom: 0.5rem;">No articles found.</h3>
-          <p style="color: var(--text-secondary); max-width: 420px; margin: 0 auto 1.5rem;">Try selecting another category or resetting filters.</p>
-          <button class="btn btn-secondary btn-sm" id="resetBlogFilterBtn">Reset Filters</button>
+          <h3 style="margin-bottom: 0.5rem;">No articles in syllabus yet.</h3>
+          <p style="color: var(--text-secondary); max-width: 420px; margin: 0 auto 1.5rem;">Articles will be populated as syllabus topics are provided.</p>
         </div>
       `;
-      const resetBtn = document.getElementById("resetBlogFilterBtn");
-      if (resetBtn) {
-        resetBtn.addEventListener("click", () => {
-          activeCategory = "all";
-          activeSearchQuery = "";
-          if (blogSearchInput) blogSearchInput.value = "";
-          updatePillActiveState();
-          renderBlogArticles();
-        });
-      }
       return;
     }
 
@@ -328,7 +333,9 @@ function initCategoryPage() {
   if (categoryArticles.length === 0) {
     categoryGrid.innerHTML = `
       <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-lg);">
-        <h3 style="margin-bottom: 0.5rem;">No articles available in this category yet.</h3>
+        <div style="font-size: 2.5rem; margin-bottom: 1rem;">📚</div>
+        <h3 style="margin-bottom: 0.5rem; font-weight: 800;">No articles in this syllabus category yet.</h3>
+        <p style="color: var(--text-secondary); max-width: 420px; margin: 0 auto;">Upload your syllabus topics for this category to publish articles.</p>
       </div>
     `;
     return;
@@ -356,7 +363,15 @@ function initArticleReaderPage() {
   }
 
   if (!article) {
-    article = window.NimLearnArticles[0];
+    articleRoot.innerHTML = `
+      <div class="container" style="text-align: center; padding: 6rem 1.5rem;">
+        <div style="font-size: 3rem; margin-bottom: 1rem;">📖</div>
+        <h2 style="font-size: 2rem; font-weight: 800;">No Article Found</h2>
+        <p style="color: var(--text-secondary); max-width: 450px; margin: 0.75rem auto 1.75rem;">Syllabus articles will be displayed here once added to the database.</p>
+        <a href="index.html" class="btn btn-primary">Back to Homepage</a>
+      </div>
+    `;
+    return;
   }
 
   document.title = `${article.title} — NimLearn`;
@@ -424,8 +439,12 @@ function initArticleReaderPage() {
   const relatedContainer = document.getElementById("relatedArticlesGrid");
   if (relatedContainer) {
     const related = window.NimLearnDB.getRelatedArticles(article.id, article.categorySlug, 3);
-    relatedContainer.innerHTML = related
-      .map((art) => window.NimLearnUI.generateArticleCardHTML(art))
-      .join("");
+    if (related.length > 0) {
+      relatedContainer.innerHTML = related
+        .map((art) => window.NimLearnUI.generateArticleCardHTML(art))
+        .join("");
+    } else {
+      relatedContainer.innerHTML = `<p style="grid-column: 1 / -1; text-align: center; color: var(--text-muted);">No related articles found in this category.</p>`;
+    }
   }
 }
