@@ -1368,15 +1368,161 @@ const AIBookData = {
           chapterNumber: 10,
           title: "Large Language Models",
           topics: [
-            { id: "ch10-t1", title: "What is an LLM?", content: null },
-            { id: "ch10-t2", title: "Training massive models", content: null },
-            { id: "ch10-t3", title: "Tokens and embeddings", content: null },
-            { id: "ch10-t4", title: "Transformers", content: null },
-            { id: "ch10-t5", title: "Attention mechanism", content: null },
-            { id: "ch10-t6", title: "Context windows", content: null },
-            { id: "ch10-t7", title: "Prompting", content: null },
-            { id: "ch10-t8", title: "Fine-tuning", content: null },
-            { id: "ch10-t9", title: "Hallucinations", content: null }
+            {
+              id: "ch10-t1",
+              title: "What is an LLM?",
+              content: `
+                <p class="article-lead">A <strong>Large Language Model (LLM)</strong> is a neural-network-based model trained on very large amounts of text data to learn patterns in language and generate or process text.</p>
+
+                <h2>Key LLM Capabilities</h2>
+                <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem; line-height: 1.8;">
+                  <li><strong>Question Answering & Writing:</strong> Explaining concepts, writing articles, and generating stories.</li>
+                  <li><strong>Summarization & Translation:</strong> Condensing long documents and translating across languages.</li>
+                  <li><strong>Coding & Reasoning:</strong> Generating code, debugging, and assisting with complex logical tasks.</li>
+                </ul>
+
+                <h2>Autoregressive Generation Flow</h2>
+                <div style="background: var(--bg-surface); border: 1px solid var(--border-color); padding: 1.25rem; border-radius: var(--radius-lg); margin: 1.5rem 0; font-family: monospace; font-size: 0.95rem; line-height: 1.7;">
+                  User Prompt → Tokenization → Token Embeddings → Transformer → Attention & Layers → Probability Distribution → Next Token → Repeat
+                </div>
+              `
+            },
+            {
+              id: "ch10-t2",
+              title: "Training massive models",
+              content: `
+                <p class="article-lead">Training an LLM is a massive computational process where parameters are adjusted iteratively to learn statistical language patterns from web-scale text datasets.</p>
+
+                <h2>The Training & Loss Optimization Cycle</h2>
+                <p>Given context (e.g., <code>"The sky is ___"</code>), the model predicts target token probabilities. A loss function measures the mathematical error, and backpropagation calculates gradients to update billions of parameters.</p>
+
+                <div class="callout-box">
+                  <div class="callout-icon">📚</div>
+                  <div class="callout-content">
+                    <h4>Pretraining Stage</h4>
+                    <p>Pretraining on massive datasets establishes foundational capabilities in vocabulary, grammar, syntax, world facts, coding patterns, and writing styles.</p>
+                  </div>
+                </div>
+              `
+            },
+            {
+              id: "ch10-t3",
+              title: "Tokens and embeddings",
+              content: `
+                <p class="article-lead">Language models process text as discrete <strong>Tokens</strong> mapped to integer IDs and continuous vector <strong>Embeddings</strong>.</p>
+
+                <h2>The Representation Pipeline</h2>
+                <div style="background: var(--bg-surface); border: 1px solid var(--border-color); padding: 1rem; border-radius: var(--radius-md); font-family: monospace; font-size: 0.95rem; margin: 1.5rem 0;">
+                  Text ("AI is powerful") → Tokenizer → Token IDs ([582, 27, 9124]) → Embedding Vectors → Transformer Layers
+                </div>
+
+                <p>Embeddings place semantically related words closer together in high-dimensional continuous vector space, allowing mathematical operations on language concepts.</p>
+              `
+            },
+            {
+              id: "ch10-t4",
+              title: "Transformers",
+              content: `
+                <p class="article-lead">Introduced in 2017 (<em>"Attention Is All You Need"</em>), the <strong>Transformer architecture</strong> revolutionized NLP by processing sequence relationships in parallel via self-attention.</p>
+
+                <h2>Transformer Layer Architecture</h2>
+                <p>Each Transformer block contains <strong>Self-Attention Mechanisms</strong>, <strong>Feed-Forward Networks</strong>, <strong>Residual Connections</strong>, and <strong>Layer Normalization</strong>.</p>
+              `
+            },
+            {
+              id: "ch10-t5",
+              title: "Attention mechanism",
+              content: `
+                <p class="article-lead">The <strong>Attention Mechanism</strong> enables models to determine how strongly different tokens in a sequence influence one another regardless of distance.</p>
+
+                <h2>Query, Key, and Value (Q, K, V)</h2>
+                <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem; line-height: 1.8;">
+                  <li><strong>Query (Q):</strong> What information the current token is seeking.</li>
+                  <li><strong>Key (K):</strong> What information other tokens contain.</li>
+                  <li><strong>Value (V):</strong> What information to pass forward if matched.</li>
+                </ul>
+
+                <h2>Scaled Dot-Product Attention Formula</h2>
+                <p style="font-family: monospace; text-align: center; background: var(--bg-surface); padding: 0.75rem; border-radius: var(--radius-sm);">Attention(Q,K,V) = softmax((QKᵀ) / √dₖ) V</p>
+
+                <h2>Multi-Head Attention</h2>
+                <p>Multiple attention heads operate in parallel to learn syntactic, semantic, short-range, and long-range token relationships simultaneously.</p>
+              `
+            },
+            {
+              id: "ch10-t6",
+              title: "Context windows",
+              content: `
+                <p class="article-lead">A <strong>Context Window</strong> defines the maximum number of tokens an LLM can process simultaneously in a single prompt and generation pass.</p>
+
+                <h2>Context vs Permanent Memory</h2>
+                <p><strong>Context Window:</strong> Active token memory provided during runtime.<br><strong>Learned Parameters:</strong> Statistical weights encoded into the model during training.<br><strong>External Memory (RAG):</strong> Retrieved documents injected dynamically into the context window.</p>
+              `
+            },
+            {
+              id: "ch10-t7",
+              title: "Prompting",
+              content: `
+                <p class="article-lead"><strong>Prompting</strong> is the craft of designing instructions, context, constraints, and formatting guidelines to steer an LLM toward desired outputs.</p>
+
+                <h2>Key Prompt Strategies</h2>
+                <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem; line-height: 1.8;">
+                  <li><strong>Zero-Shot Prompting:</strong> Providing a direct instruction without examples.</li>
+                  <li><strong>Few-Shot Prompting:</strong> Including input-output example pairs to demonstrate expected patterns.</li>
+                  <li><strong>Role & Constraint Formatting:</strong> Specifying target audience, length, tone, and step-by-step structure.</li>
+                </ul>
+              `
+            },
+            {
+              id: "ch10-t8",
+              title: "Fine-tuning",
+              content: `
+                <p class="article-lead"><strong>Fine-tuning</strong> is additional training performed on a pretrained base model using specialized datasets to adapt its parameters for specific tasks, domains, or alignment objectives.</p>
+
+                <h2>Fine-Tuning vs Prompting vs RAG</h2>
+                <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.95rem;">
+                  <thead>
+                    <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border-color); text-align: left;">
+                      <th style="padding: 0.75rem;">Approach</th>
+                      <th style="padding: 0.75rem;">Mechanism</th>
+                      <th style="padding: 0.75rem;">Primary Use Case</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr style="border-bottom: 1px solid var(--border-color);">
+                      <td style="padding: 0.75rem;"><strong>Prompting</strong></td>
+                      <td style="padding: 0.75rem;">Runtime instruction framing</td>
+                      <td style="padding: 0.75rem;">Quick task direction</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border-color);">
+                      <td style="padding: 0.75rem;"><strong>Fine-Tuning</strong></td>
+                      <td style="padding: 0.75rem;">Updates model weight parameters</td>
+                      <td style="padding: 0.75rem;">Style, tone, formatting, domain adaptation</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border-color);">
+                      <td style="padding: 0.75rem;"><strong>RAG</strong></td>
+                      <td style="padding: 0.75rem;">Retrieves & injects external documents</td>
+                      <td style="padding: 0.75rem;">Up-to-date facts, private enterprise search</td>
+                    </tr>
+                  </tbody>
+                </table>
+              `
+            },
+            {
+              id: "ch10-t9",
+              title: "Hallucinations",
+              content: `
+                <p class="article-lead">An AI <strong>Hallucination</strong> occurs when an LLM generates unsupported, fabricated, or factually incorrect information presented with high confidence.</p>
+
+                <h2>Causes & Mitigations</h2>
+                <p>Caused by statistical next-token optimization without absolute ground-truth grounding. Mitigated via <strong>Retrieval-Augmented Generation (RAG)</strong>, clear system prompts, source verification, and human oversight.</p>
+
+                <div style="background: var(--bg-surface); border: 1px solid var(--border-color); padding: 1.25rem; border-radius: var(--radius-lg); margin-top: 1rem;">
+                  <h4 style="color: var(--accent-primary); margin-bottom: 0.5rem;">LLM Architecture Summary</h4>
+                  <p style="margin: 0; font-size: 0.95rem;">Massive Text → Tokenization → Embeddings → Transformer Self-Attention → Next-Token Probabilities → Generation</p>
+                </div>
+              `
+            }
           ]
         },
         {
